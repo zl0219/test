@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //.数组扁平化
+        //例：
+        //输入：[[1, 2], [3, 4], [6, 7, 9, [11, 12, [12, 13, [14]]]], 10]
+        //输出：[ 1, 2, 3, 4, 6, 7,  9, 11, 12, 12, 13, 14, 10 ]
+
+        var arr = [[1, 2], [3, 4,], [6, 7, 9, [11, 12, [12, 13, [14]]]], 10];
+        var result = [];
+
+        function even(arr){
+            //code...
+            for(let i = 0; i < arr.length; i++){
+                if(Array.isArray(arr[i])){
+                    even(arr[i]);
+                }else{
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        }
+
+        console.log(even(arr));   // [ 1, 2, 3, 4, 6, 7, 9, 11, 12, 12, 13, 14, 10 ]
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
