@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var data = {
+              age: 18,
+              name: "liuruchao",
+              education: ["小学", "初中", "高中", "大学", undefined, null],
+              likesFood: new Set(["fish", "banana"]),
+              friends: [
+                    { name: "summer",  sex: "woman"},
+                    { name: "daWen",   sex: "woman"},
+                    { name: "yang",    sex: "man" }  ], 
+              work: { 
+                      time: "2019", 
+                      project: { name: "test",obtain: ["css", "html", "js"]} 
+                    }, 
+              play: function() {    console.log("玩滑板");  }
+          };
+          function deepClone(source){
+            const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+            for(let keys in source){ // 遍历目标
+                if(source.hasOwnProperty(keys)){
+                    if(source[keys] && typeof source[keys] === 'object'){ // 如果值是对象，就递归一下
+                        if(source[keys] instanceof Set){
+                             // set也是对象，实现set数据的深拷贝
+                             targetObj[keys] = new Set([...source[keys]]);
+                        }else{
+                            //其他对象
+                        targetObj[keys] = source[keys].constructor === Array ? [] : {};
+                        targetObj[keys] = deepClone(source[keys]);
+                        }
+                    }else{ // 如果不是，就直接赋值
+                        targetObj[keys] = source[keys];
+                    }
+                }   
+            }
+            return targetObj;
+        };
+        console.log(data);
+        const clone = deepClone(data);
+        console.log(clone);
+</script>
+</html>
