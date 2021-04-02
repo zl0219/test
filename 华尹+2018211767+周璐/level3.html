@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            display: flex;
+        }
+
+        ul li {
+            list-style: none;
+
+        }
+
+        .content {
+            width: 1200px;
+            height: 800px;
+            background-color: lightskyblue;
+            position: relative;
+        }
+
+        .content .item {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 80%;
+            background-color: yellow;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><input type="text" id='num'></li>
+        <li> <button id='leftInto'>左侧入</button></li>
+        <li> <button id='rightInto'>右侧入</button></li>
+        <li> <button id='leftOut'>左侧出</button></li>
+        <li> <button id='rightOut'>右侧出</button></li>
+        <li> <button id='reOrder'>重新排序</button></li>
+        <li> <button id='clear'>清空</button></li>
+        <li> <button id='randomGenator'>随机生成</button></li>
+    </ul>
+    <div class='content'>
+    </div>
+</body>
+<script>
+
+    window.onload = function () {
+        let items = []
+
+        //渲染函数
+        function render() {
+            clearContent()
+            if (items.length === 0)return
+            let content = document.querySelectorAll('.content')[0]
+            let itemWidth = parseInt((content.offsetWidth / items.length) - 30)
+            if (itemWidth > 800) { itemWidth = content.offsetWidth / 2 }
+            for (let i = 0; i < items.length; i++) {
+                let item = document.createElement('div')
+                item.className = 'item'
+                item.innerText = items[i]
+                item.style.width = itemWidth + 'px'
+                item.style.height = items[i] + '%';
+                item.style.left = ((itemWidth * i) + (i * 20)) + 'px'
+                content.append(item);
+            }
+
+        }
+
+        //随机生成
+        let randomGenatorBtn = document.querySelector('#randomGenator');
+        randomGenatorBtn.onclick = function () {
+            items = []
+            while (items.length < 10) {
+                let num =  parseInt(Math.random() * 100);
+                if (items.indexOf(num) == -1) items.push(num)
+            }
+            render()
+        }
+        //清除代码
+        let clearBtn = document.querySelector('#clear');
+        clearBtn.onclick = function () {
+            clearContent()
+        }
+
+        //左进入
+        let leftInto = document.querySelector('#leftInto')
+        leftInto.onclick = function () {
+            let num = document.querySelector('#num')
+            if (num.value < 10 || num.value > 100) {
+                alert('请输入10-100')
+                return
+            }
+            items = intoArr(items, num.value)
+            render()
+        }
+        // 右进入
+        let rightInto = document.querySelector('#rightInto')
+        rightInto.onclick = function () {
+            let num = document.querySelector('#num')
+            if (num.value < 10 || num.value > 100) {
+                alert('请输入10-100')
+                return
+            }
+            items = intoArr(items, num.value, 'right')
+            render()
+        }
+
+
+        let leftOutBtn = document.querySelector('#leftOut')
+        leftOutBtn.onclick = function () {
+            items = Out(items)
+            render()
+        }
+        let rightOutBtn = document.querySelector('#rightOut')
+        rightOutBtn.onclick = function () {
+            items = Out(items, 'right')
+            render()
+        }
+
+
+        let reOrderBtn = document.querySelector('#reOrder')
+         reOrderBtn.onclick = reOrder
+
+        // 封装统一进入函数，根据参数判断是左进入还是右进入
+        function intoArr(arr, num, option = 'left') {
+            let newArr = arr
+            if (option == 'left') {
+                newArr = arr.reverse()
+                newArr.push(num)
+                newArr = newArr.reverse()
+            } else {
+                newArr.push(num)
+            }
+            return newArr
+        }
+         
+        // 封装统一Out函数，根据参数判断是左出还是右出
+        function Out(arr, option = 'left') {
+            let newArr = arr
+            if (option == 'left') {
+                newArr = arr.reverse()
+                newArr.pop()
+                newArr = newArr.reverse()
+            } else {
+                newArr.pop()
+            }
+            return newArr
+        }
+        
+        // 数据重排函数
+        function reOrder() {
+            let newArr =[]
+            for (let i = 0; len = items.length; i++) {
+                let j = Math.floor(Math.random() * items.length);
+                newArr[i] = items[j];
+                items.splice(j, 1);
+            }
+            items = newArr
+            render()
+        }
+
+        
+        // 清理屏幕
+        function clearContent() {
+            let content = document.querySelectorAll('.content')[0]
+            content.innerHTML = ''
+        }
+    }
+</script>
+
+</html>

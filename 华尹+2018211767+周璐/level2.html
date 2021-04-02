@@ -2,20 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    
-</body>
-<script>
-    var arr = [1, [2, [3, [4, 5]]], 6];
-    function even (arr) {
-        //你的代码
-        console.log(arr.join(",").split(","));
-    }
-    even(arr); //[1,2,3,4,5,6]
+    <textarea name="" id="txt" cols="80" rows="10"></textarea>
+    <button class="post">点击发布</button>
+    <div class="list">
+    </div>
 
-</script>
+    <script>
+       //你的代码
+       var oTxt = document.getElementById('txt');
+       var oBtn = document.getElementsByTagName('button');
+       var oDiv = document.getElementsByTagName('div');
+
+       oBtn[0].onclick = function(){
+           var txt = oTxt.value;
+           var div = document.createElement('div');
+           div.innerText = txt;
+           if(oDiv[0].children.length){
+               oDiv[0].insertBefore(div,oDiv.firstElementChild);
+           }else{
+                oDiv[0].appendChild(div);
+           }
+           oTxt.value = '';
+           
+       }
+    </script>
+</body>
 </html>
