@@ -1,0 +1,11 @@
+.listitem{
+    height:430px;
+    max-height:430px;
+}
+
+.listitem h3{
+    font-size: 18px;
+}
+.col-sm-12 .media{
+    margin-top: 12px;
+}
