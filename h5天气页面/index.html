@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/common.css">
+</head>
+<body>
+    <div>
+        <div class="sec-main">
+            <div class="top">
+                <a href=""><img src="./images/icon/arrow-left-bold.png" alt=""></a>
+                <div class="middle clear">
+                    <img src="./images/icon/map.png" alt="">
+                    <span class="wea_city">北京市 海淀区</span>
+                </div>
+                <a href=""><img src="./images/icon/share.png" alt=""></a>
+            </div>
+            <p id="temperature">19.</p>
+            <p id="weather">雷阵雨</p>
+            <p id="ct-wind-humidity">湿度 70%</p>
+            <p id="tips">现在的温度比较凉爽</p>
+        </div>
+        <div id="sec-tomorrow">
+            <div class="item">
+                <div class="top">
+                    <p class="data">今天</p>
+                    <p class="temperature todayTem">31/18</p>
+                </div>
+                <div class="bottom">
+                    <p class="weather todayWea">雷阵雨</p>
+                    <img class="todayWeaImg" src="./images/icon/leidian.png" alt="">
+                </div>
+            </div>
+            <div class="item">
+                <div class="top">
+                    <p class="data">明天</p>
+                    <p class="temperature tomrrowTem">33/16</p>
+                </div>
+                <div class="bottom">
+                    <p class="weather tomrrowWea">多云转晴</p>
+                    <img class="tomrrowWeaImg" src="./images/icon/qing.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="sec-hours">
+            <div id="ct-scroll">
+                <ol class="sec-realtime-ul">  
+                </ol>
+            </div>
+        </div>
+        <div id="sec-days">
+            <div id="ct-scroll">
+                <ol id="ls-days" class="sec-weekWeather">
+                    
+                </ol>
+                <div id="ct-chart-days"></div>
+            </div>
+        </div>
+        <div id="sec-living">
+            <div class="container">
+                <ul id="is-living1" class="is-living">
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">不限行</p>
+                        <p class="title">尾号限行</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">热</p>
+                        <p class="title">穿衣</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">不带伞</p>
+                        <p class="title">雨伞</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">少发</p>
+                        <p class="title">感冒</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">较适宜</p>
+                        <p class="title">洗车</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">较适宜</p>
+                        <p class="title">运动</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">极强</p>
+                        <p class="title">防晒</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">较适宜</p>
+                        <p class="title">防晒</p>
+                    </li>
+                </ul>
+                <ul id="is-living2" class="is-living">
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">适宜</p>
+                        <p class="title">旅游</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">良好</p>
+                        <p class="title">交通</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">中</p>
+                        <p class="title">空气中污染扩散条件</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">较不舒适</p>
+                        <p class="title">舒适度</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">适宜</p>
+                        <p class="title">晾晒</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">去油防晒</p>
+                        <p class="title">化妆</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">较适宜</p>
+                        <p class="title">晨练</p>
+                    </li>
+                    <li class="item">
+                        <span class="icon"></span>
+                        <p class="content">较易发</p>
+                        <p class="title">过敏</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="sec-footer">
+            <div id="ct-links">
+                <a href="http://m.weather.com.cn">数据来源于中国天气网</a>
+            </div>
+            <div id="copyrigh">
+                Copyright @ 1998-2021 Tencent. All Right Reserved
+            </div>
+        </div>
+        <div id="sec-loaction">
+            <div id="ct-search">
+                <a href="javascript:void()" id="btn-cancel">取消</a>
+                <div id="ct-input">
+                    <span></span>
+                    <input type="text" id="i-location" placeholder="搜索地区">
+                </div>
+            </div>
+            <div id="ct-hot-city">
+                <div id="ct-history">
+                    <a href="" id="btn-clean"></a>
+                    <p title="title">历史记录</p>
+                    <ul class="ls-city">
+                        <li class="opt city">上海</li>
+                    </ul>
+                </div>
+                <p class="title">热门城市</p>
+                <ul class="ls-city">
+                    <li class="opt city">北京</li>
+                    <li class="opt city">上海</li>
+                    <li class="opt city">广州</li>
+                    <li class="opt city">深圳</li>
+                    <li class="opt city">郑州</li>
+                    <li class="opt city">西安</li>
+                    <li class="opt city">南京</li>
+                    <li class="opt city">杭州</li>
+                    <li class="opt city">武汉</li>
+                    <li class="opt city">成都</li>
+                    <li class="opt city">沈阳</li>
+                    <li class="opt city">天津</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="./js/jQuery.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script> 
+
+<script>
+        $(function(){ 
+            let CitySN = null;
+            let lat = null;
+            let long = null;
+            let TodayWeather = null;
+            let TomorrowWeather = null;
+            let WeekWeatherData = [];
+            let weekWeathermaxData = [];
+            let weekWeatherminData = [];
+            let sec_weekWeather_main = echarts.init(document.getElementById('ct-chart-days'));
+
+
+            CitySN = returnCitySN["cip"];
+
+            window.navigator.geolocation.getCurrentPosition(function (position) {
+                lat = position.coords.latitude.toFixed(2);
+                long = position.coords.longitude.toFixed(2);
+            })
+
+        $.ajax({
+            url:'https://v0.yiketianqi.com/api?version=v9&appid=85555685&appsecret=zwr3Cfuy&ip='+CitySN,
+            success:function(res){
+                $("#weather").text(res.data[0].wea);
+                $(".wea_city").text(res.city);
+                $("#temperature").text(res.data[0].tem+'°')
+                $("#ct-wind-humidity").text('湿度'+res.data[0].humidity);
+                if(res.data[0].wea_img=='qing'){
+                    $('.sec-main').css("background-image","url('./images/qing.jpg')");
+                    $('#tips').text('天太热了，吃个西瓜~');
+                }else if(res.wea_img=='yin'){
+                    $('.sec-main').css("background-image","url('./images/yun.jpg')");
+                    $('#tips').text('光芒透过云缝，洒向大地~');
+                }else if(res.wea_img="lei"){
+                    $('.sec-main').css("background-image","url('./images/lei.jpg')");
+                }else{
+                    $('.sec-main').css("background-image","url('./images/bingbao.jpg')");
+                }
+
+                WeekWeatherData = res.data;
+
+                TodayWeather = res.data[0];
+
+                TomorrowWeather = res.data[1];
+                $(".todayTem").text(TodayWeather.tem1+'/'+TodayWeather.tem2);
+                $(".todayWea").text(TodayWeather.wea);
+                $(".tomrrowTem").text(TomorrowWeather.tem1+'/'+TomorrowWeather.tem2);
+                $(".tomrrowWea").text(TomorrowWeather.wea);
+                WeaImgSection('.todayWeaImg',TodayWeather.wea_img);
+                WeaImgSection('.tomrrowWeaImg',TomorrowWeather.wea_img);
+
+
+                let weekMsgMax = '';
+                for(var i = 0;i<WeekWeatherData.length;i++){
+                    WeekWeatherData[i].date=WeekWeatherData[i].date.substring(5);
+                    weekWeathermaxData.push(Number(WeekWeatherData[i].tem));
+                    weekWeatherminData.push(Number(WeekWeatherData[i].tem2));
+
+                    weekMsgMax+=`
+                    <li class="item">
+                        <p class="day">今天</p>
+                        <p class="data">${WeekWeatherData[i].date}</p>
+                        <div class="ct-daytime">
+                            <p class="weather">${WeekWeatherData[i].wea}</p>
+                            <img src='./images/icon/${WeekWeatherData[i].wea_img}.png'>
+                        </div>
+                        <div class="ct-night">
+                            <img src='./images/icon/${WeekWeatherData[i].wea_img}.png'>
+                            <p class="weather">雷阵雨</p>
+                        </div>
+                        <p class="wind">${WeekWeatherData[i].win[1]}</p>
+                        <p class="wind">${WeekWeatherData[i].win_speed}</p>
+                    </li>
+                    
+                    `;
+                }
+
+                $(".sec-weekWeather").html(weekMsgMax);
+
+
+                sec_weekWeather_main.setOption( {
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        show:false,
+                        "axisLine":{     
+                    		    "show":false
+                    	    },
+                    	axisLabel:{ show: false },
+                        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                    },
+                    yAxis: {
+                        type: 'value',
+                        show:false
+                    },
+                    series: [
+                        {
+                            name: '本周最高温度',
+                            type: 'line',
+                        
+                            data: weekWeathermaxData,
+                            smooth: true,
+                            label: {
+                                show: true,
+                                position: 'top',
+                                textStyle: {
+                                    color: '#899cd7',
+                                },
+                                formatter:'{c}°'
+                            },
+                        },
+                        {
+                            name: '本周最低温度',
+                            type: 'line',
+                        
+                            data: weekWeatherminData,
+                            smooth: true,
+                            label: {
+                                show: true,
+                                position: 'bottom',
+                                textStyle: {
+                                    color: '#91cc75',
+                                },
+                                formatter:'{c}°'
+                            },
+                        }
+                    ]
+                });
+
+            }
+        });
+
+
+        $.ajax({
+            url:'https://v0.yiketianqi.com/api?version=v62&appid=85555685&appsecret=zwr3Cfuy&ip='+CitySN,
+            success:function(res){
+                let hourMes='';
+                for(var i=0;i<res.hours.length;i++){
+                    hourMes += `
+
+                    <li class="item">
+                        <p class="tetx-time">${res.hours[i].hours}</p>
+                        <img class="realtimeItemImg"  src='./images/icon/${res.hours[i].wea_img}.png'>
+                        <p class="text-degree">${res.hours[i].tem}°</p>
+                    </li>
+                    `
+                }
+
+                $('.sec-realtime-ul').html(hourMes);
+            }
+        })
+
+
+
+
+
+        function WeaImgSection(cl,wea_img){
+            if(wea_img=='qing'){
+                $(cl).attr('src','./images/icon/qing.png');
+            }else if(wea_img=='yu'){
+                $(cl).attr('src','./images/icon/yu.png');
+            }else if(wea_img=='yun'){
+                $(cl).attr('src','./images/icon/yin.png');
+            }else if(wea_img=='leidian'){
+                $(cl).attr('src','./images/icon/leidian.png');
+            }else{
+                return false;
+            }
+        }
+
+        $(".wea_city").click(function(){
+            $("#sec-loaction").show();
+        })
+
+        $("#btn-cancel").click(function(){
+            $("#sec-loaction").hide();
+        })
+
+
+
+
+        })
+</script>
